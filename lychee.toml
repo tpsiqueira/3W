@@ -3,6 +3,21 @@ exclude_path = [
   "report_template.html",
 ]
 
-accept = ["100..=103", "200..=299", "403", "429"]
+accept = ["100..=103", "200..=299", "403", "406", "429"]
 
 user_agent = "Mozilla/5.0"
+
+max_retries = 3
+retry_wait_time = 2
+timeout = 30
+
+exclude = [
+  'doi\.org',
+  'ibp\.org\.br',
+  'tbpetroleum\.com\.br',
+  'fsma\.edu\.br',
+  'ufrgs\.br',
+  'hotsitespetrobras\.com\.br',
+  'sol\.sbc\.org\.br',
+  'nvidia\.com',
+]
