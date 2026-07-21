@@ -75,7 +75,7 @@ class MultivariateConsensus(BaseEstimator):
         binary_row = self.selection_mask_[threshold_idx, :]
         selected_indices = np.where(binary_row == 1)[0]
 
-        return selected_indices.tolist()
+        return [int(index) for index in selected_indices]
 
     def _generate_threshold_range(self) -> list[float]:
         num_steps = (
@@ -85,9 +85,12 @@ class MultivariateConsensus(BaseEstimator):
             )
             + 1
         )
-        return np.linspace(
-            self.config.min_threshold, self.config.max_threshold, num_steps
-        ).tolist()
+        return [
+            float(value)
+            for value in np.linspace(
+                self.config.min_threshold, self.config.max_threshold, num_steps
+            )
+        ]
 
     def _determine_total_sample_count(
         self,

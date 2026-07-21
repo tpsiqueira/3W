@@ -66,7 +66,7 @@ class HierarchicalClusterer(BaseEstimator, ClusterMixin):
         reference_instance_label = cluster_labels[0]
 
         main_cluster_indices = np.where(cluster_labels == reference_instance_label)[0]
-        return main_cluster_indices.tolist()
+        return [int(index) for index in main_cluster_indices]
 
     def _normalize_distance_matrix(self, distance_matrix: np.ndarray) -> np.ndarray:
         max_distance = np.max(distance_matrix)
